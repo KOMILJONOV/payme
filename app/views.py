@@ -14,7 +14,7 @@ from paycom import Paycom
 class Request:
     method: str
     body: bytes
-    META: dict[str, str]
+    META: "dict[str, str]"
 
 
 class PaymeView:
