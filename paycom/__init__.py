@@ -141,7 +141,7 @@ class Paycom:
                 "ok": False,
                 "error": {
                     "code": -31001,
-                    "message": "salom2"
+                    "message": "salom1"
                 }
             }
         
@@ -212,7 +212,7 @@ class Paycom:
                         "ok": False,
                         "error":{
                             "code": -31099,
-                            "message": "salom3"
+                            "message": "salom2"
                         }
                     }
 
@@ -272,7 +272,7 @@ class Paycom:
                     "ok": False,
                     "error": {
                         "code": -31008,
-                        "message": "salom"
+                        "message": "salom3"
                     }
                 }
         else:
@@ -280,7 +280,7 @@ class Paycom:
                 "ok": False,
                 "error": {
                     "code": -31003,
-                    "message": "salom"
+                    "message": "salom4"
                 }
             }
     
@@ -327,6 +327,6 @@ class Paycom:
                 "ok": False,
                 "error": {
                     "code": -31008,
-                    "message": "salom"
+                    "message": "salom5"
                 }
             }

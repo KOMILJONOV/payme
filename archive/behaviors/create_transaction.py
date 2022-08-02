@@ -32,7 +32,7 @@ class CreateTransaction(BaseBehavior):
                 "ok": False,
                 "error": {
                     "code": -31099,
-                    "message": "salom"
+                    "message": "salom6"
                 }
             }
 
