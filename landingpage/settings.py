@@ -26,7 +26,6 @@ SECRET_KEY = 'django-insecure-rjc1%5x_rh(lq8@szo$2l#+payya_r4aqd75kogx$l=xp0$3hy
 DEBUG = True
 
 
-
 ALLOWED_HOSTS = []
 CORS_ORIGIN_ALLOW_ALL = DEBUG
 
@@ -58,7 +57,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'landingpage.urls'
 CORS_ORIGIN_WHITELIST = [
-    'https://localhost:3000'
+    'https://localhost:3000',
+    'http://206.189.10.175'
 ]
 
 TEMPLATES = [
