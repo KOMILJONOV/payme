@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 CORS_ORIGIN_ALLOW_ALL = DEBUG
 
-
+STATIC_ROOT = BASE_DIR / 'static'
 # Application definition
 
 INSTALLED_APPS = [
