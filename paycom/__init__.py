@@ -80,14 +80,17 @@ class Paycom:
             return False
         return True
     login = "Paycom"
-    key = "o?2veaMRDqzdqq&iIREA7qe&i4kyZrEiSUGJ"
+    # key = "o?2veaMRDqzdqq&iIREA7qe&i4kyZrEiSUGJ"
+    key = "RXxN?vmZ3#qM?DsXI%m9xhKzwsB2iR&kRWFr"
     
     def generate_pair_login_pass(self):
         return self.login + ":" + self.key
 
     def launch(self):
         if self.params.method == CHECK_PERFORM_TRANSACTION:
-            return self.check_perform_transaction()
+            res = self.check_perform_transaction()
+            print(res)
+            return res
         elif self.params.method == CREATE_TRANSACTION:
             return self.create_transaction()
         elif self.params.method == PERFORM_TRANSACTION:
@@ -96,6 +99,8 @@ class Paycom:
             return self.cancel_transaction()
         elif self.params.method == CHECK_TRANSACTION:
             return self.check_transaction()
+
+        print("sdfsdf")
         
         return 1
 
@@ -105,29 +110,60 @@ class Paycom:
                 "ok": False,
                 "error": {
                     "code": -32504,
-                    "message": "ok1"
+                    "message":{
+                        "uz": "Foydalanuvchi topilmadi.",
+                        "ru": "Пользователь не найден.",
+                        "en": "User not found."
+                    }
                 }
             }
 
         pay: Payment = Payment.objects.filter(
-            id=self.params.params.account.login).first()
+            id=self.params.params.account.login
+        ).first()
         if not pay:
             return {
                 "ok": False,
                 "error": {
                     "code": -31099,
-                    "message": "User Not Found"
+                    "message": {
+                        "uz": "Foydalanuvchi topilmadi.",
+                        "ru": "Пользователь не найден.",
+                        "en": "User not found."
+                    }
                 }
             }
+        
+        
 
         if self.params.params.amount != pay.amount:
             return {
                 "ok": False,
                 "error": {
                     "code": -31001,
-                    "message": "salom"
+                    "message": "salom2"
                 }
             }
+        
+        if pay.state in (
+            Payment.PAYMENT_IS_PAYED,
+            Payment.PAYMENT_CANCELLED
+        ):
+            return {
+                "ok": False,
+                "error": {
+                    "code": -31099,
+                    "message": {
+                        "uz":"To'lov amalga oshirib bo'lingan!" if pay.state == Payment.PAYMENT_IS_PAYED else "Kechirasiz to'lov bekor qilingan.",
+                        "ru":"Оплата завершена!" if pay.state == Payment.PAYMENT_IS_PAYED else "Извините, платеж отменен.",
+                        "en":"Payment completed!" if pay.state == Payment.PAYMENT_IS_PAYED else "Sorry, the payment has been cancelled.",
+                    } 
+                }
+            }
+        
+        
+
+
         return {
             "ok": True,
             "result": {
@@ -163,7 +199,11 @@ class Paycom:
                 "ok": False,
                 "error": {
                     "code": -32504,
-                    "message": "ok"
+                    "message": {
+                        "uz": "Foydalanuvchi topilmadi.",
+                        "ru": "Пользователь не найден.",
+                        "en": "User not found."
+                    }
                 }
             }
         user: Transaction = Transaction.objects.filter(account=self.params.params.account.login).first()
@@ -172,7 +212,7 @@ class Paycom:
                         "ok": False,
                         "error":{
                             "code": -31099,
-                            "message": "salom"
+                            "message": "salom3"
                         }
                     }
 
@@ -206,6 +246,7 @@ class Paycom:
         transaction: Transaction = Transaction.objects.filter(
             trans_id=self.params.params.id
         ).first()
+
         if transaction:
             if transaction.state == Transaction.STATE_CREATED:
                 transaction.set_payed()

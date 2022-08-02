@@ -142,10 +142,8 @@ def time_now_in_ms():
 
 
 
-class Account(models.Model):
-    pass
-
 class Payment(models.Model):
+    id: int
     PAYMENT_ON_WAIT = 1
     PAYMENT_IS_PAYED = 2
     PAYMENT_CANCELLED = -1
@@ -209,6 +207,7 @@ class Transaction(models.Model):
     
     def set_payed(self):
         self.state = self.STATE_PAYED
+        Payment.objects.filter(id=self.account).update(state=Payment.PAYMENT_IS_PAYED)
         self.perform_time = time_now_in_ms()
         self.save()
     

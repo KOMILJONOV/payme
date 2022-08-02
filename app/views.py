@@ -24,7 +24,9 @@ class PaymeView:
         if auth:
             self.paycom = Paycom(self.data)
             res = self.paycom.launch()
+
             print(res)
+
             response = {
                 'jsonrpc': '2.0',
                 'id': self.data['id'],
@@ -63,7 +65,8 @@ class PaymeView:
         return True
 
     login = "Paycom"
-    key = "o?2veaMRDqzdqq&iIREA7qe&i4kyZrEiSUGJ"
+    # key = "o?2veaMRDqzdqq&iIREA7qe&i4kyZrEiSUGJ"
+    key = "RXxN?vmZ3#qM?DsXI%m9xhKzwsB2iR&kRWFr"
     
     def generate_pair_login_pass(self):
         return self.login + ":" + self.key
