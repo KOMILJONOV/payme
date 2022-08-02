@@ -110,7 +110,7 @@ class Paycom:
             }
 
         pay: Payment = Payment.objects.filter(
-            account=self.params.params.account.login).first()
+            id=self.params.params.account.login).first()
         if not pay:
             return {
                 "ok": False,
