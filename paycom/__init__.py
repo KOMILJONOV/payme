@@ -80,8 +80,8 @@ class Paycom:
             return False
         return True
     login = "Paycom"
-    # key = "o?2veaMRDqzdqq&iIREA7qe&i4kyZrEiSUGJ"
-    key = "RXxN?vmZ3#qM?DsXI%m9xhKzwsB2iR&kRWFr"
+    key = "o?2veaMRDqzdqq&iIREA7qe&i4kyZrEiSUGJ"
+    # key = "RXxN?vmZ3#qM?DsXI%m9xhKzwsB2iR&kRWFr"
     
     def generate_pair_login_pass(self):
         return self.login + ":" + self.key
