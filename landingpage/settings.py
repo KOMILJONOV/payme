@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-rjc1%5x_rh(lq8@szo$2l#+payya_r4aqd75kogx$l=xp0$3hy
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['44ad-213-230-112-146.eu.ngrok.io']
 CORS_ORIGIN_ALLOW_ALL = DEBUG
 
 STATIC_ROOT = BASE_DIR / 'static'
@@ -58,7 +58,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'landingpage.urls'
 CORS_ORIGIN_WHITELIST = [
     'https://localhost:3000',
-    'http://206.189.10.175'
+    'http://206.189.10.175',
 ]
 
 TEMPLATES = [
