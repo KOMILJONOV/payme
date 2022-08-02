@@ -141,7 +141,11 @@ class Paycom:
                 "ok": False,
                 "error": {
                     "code": -31001,
-                    "message": "salom1"
+                    "message": {
+                        "uz": "Kechirasiz to'lov summasi to'g'ri kelmadi.",
+                        "ru": "Kechirasiz to'lov summasi to'g'ri kelmadi.",
+                        "en": "Kechirasiz to'lov summasi to'g'ri kelmadi."
+                    }
                 }
             }
         

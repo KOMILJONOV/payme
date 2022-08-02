@@ -103,7 +103,7 @@ def register(request):
             "ok": True,
             "data": {
                 'id': new_user.id,
-
+                'amount': new_user.amount
             }
         }
     )

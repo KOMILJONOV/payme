@@ -42,7 +42,7 @@ class Payment(models.Model):
 
 
     @property
-    def amounts(self):
+    def amount(self):
         return (
             100_000_000 if self.plan == 1 else (
                 200_000_000 if self.plan == 2 else 300_000_000
