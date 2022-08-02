@@ -151,7 +151,6 @@ class Payment(models.Model):
     PAYMENT_CANCELLED = -1
 
     
-    account = models.IntegerField(blank=False)
     state = models.SmallIntegerField(blank=False, choices=[
         (1, "On wait"),
         (2, "Payed"),
