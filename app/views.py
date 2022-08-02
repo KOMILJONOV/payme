@@ -97,6 +97,7 @@ def register(request):
         phone=data['number'],
         plan=plan
     )
+
     print(dir(new_user))
 
     return JsonResponse(

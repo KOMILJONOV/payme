@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-rjc1%5x_rh(lq8@szo$2l#+payya_r4aqd75kogx$l=xp0$3hy
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['44ad-213-230-112-146.eu.ngrok.io']
+ALLOWED_HOSTS = ['44ad-213-230-112-146.eu.ngrok.io', '127.0.0.1']
 CORS_ORIGIN_ALLOW_ALL = DEBUG
 
 STATIC_ROOT = BASE_DIR / 'static'
@@ -48,7 +48,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
