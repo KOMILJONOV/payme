@@ -81,7 +81,6 @@ paymeView = PaymeView()
 def home(request):
     new_user: Payment = Payment.objects.create(
         state=Payment.PAYMENT_ON_WAIT,
-        amount=5000,
         phone="+998998704306"
     )
     return render(request, 'index.html', {
@@ -92,12 +91,19 @@ def home(request):
 
 def register(request):
     res = request.body
-    print(res)
+    data = json.loads(res)
+    plan = data['plan']
+    new_user: Payment = Payment.objects.create(
+        phone=data['number'],
+        plan=plan
+    )
+
     return JsonResponse(
         {
-            "ok": True
+            "ok": True,
+            "data": {
+                'id': new_user.id,
+
+            }
         }
     )
-    # Payment.objects.create(
-
-    # )
