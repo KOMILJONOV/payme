@@ -91,6 +91,13 @@ def home(request):
 
 
 def register(request):
-    Payment.objects.create(
-
+    res = request.body
+    print(res)
+    return JsonResponse(
+        {
+            "ok": True
+        }
     )
+    # Payment.objects.create(
+
+    # )
