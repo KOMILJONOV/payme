@@ -25,12 +25,19 @@ SECRET_KEY = 'django-insecure-rjc1%5x_rh(lq8@szo$2l#+payya_r4aqd75kogx$l=xp0$3hy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ALLOWED_HOSTS = ['127.0.0.1', '198.199.73.117', 'smm-online.uz']
 
-ALLOWED_HOSTS = ['44ad-213-230-112-146.eu.ngrok.io', '127.0.0.1']
 CORS_ORIGIN_ALLOW_ALL = DEBUG
 
-STATIC_ROOT = BASE_DIR / 'static'
+#STATIC_ROOT = BASE_DIR / 'static'
+
 # Application definition
+
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -57,7 +64,9 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'landingpage.urls'
 CORS_ORIGIN_WHITELIST = [
     'https://localhost:3000',
-    'http://206.189.10.175',
+    'http://198.199.73.117',
+    'http://smm-online.uz',
+    'https://smm-online.uz'
 ]
 
 TEMPLATES = [
