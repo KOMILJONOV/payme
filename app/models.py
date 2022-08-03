@@ -43,11 +43,11 @@ class Payment(models.Model):
 
     @property
     def amount(self):
-        return (
+        return ((
             179 if self.plan == 1 else (
                 229 if self.plan == 2 else 399
             )
-        ) * self.usd_course
+        ) * self.usd_course) * 100
         
 
 
