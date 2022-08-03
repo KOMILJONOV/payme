@@ -1,9 +1,10 @@
 import base64
 import json
 import random
+from urllib import request
 from django.http import JsonResponse
 from django.shortcuts import render
-from app.models import Payment
+from app.models import JustRequest, Payment
 from paycom import Paycom
 
 
@@ -86,20 +87,27 @@ def home(request):
     return render(request, 'index.html', {
         'order_id': new_user.id
     })
-
-
+import requests
+def get_course():
+    res = requests.get('https://nbu.uz/exchange-rates/json')
+    if res.status_code == 200:
+        for i in res.json():
+            if i['code'] == "USD":
+                return i['nbu_cell_price']
+    else:
+        return get_course()
 
 def register(request):
     res = request.body
     data = json.loads(res)
-    plan = data['plan']
+    usd_course = get_course()
+
     new_user: Payment = Payment.objects.create(
         name=data['name'],
         phone=data['number'],
-        plan=plan
+        plan=data['plan'],
+        usd_course=usd_course
     )
-
-    print(dir(new_user))
 
     return JsonResponse(
         {
@@ -110,3 +118,14 @@ def register(request):
             }
         }
     )
+
+
+def just_register(request):
+    res = request.body
+    data = json.loads(res)
+    JustRequest.objects.create(
+        **data
+    )
+    return JsonResponse({
+        "ok": True
+    })

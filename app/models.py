@@ -25,10 +25,11 @@ class Payment(models.Model):
 
     name = models.CharField(max_length=500)
     phone = models.CharField(max_length=15, blank=False)
+    usd_course = models.FloatField(default=11015.0)
     plan = models.IntegerField(choices=[
-        (1, 'Silver'),
-        (2, "Gold"),
-        (3, "Platinum")
+        (1, 'Standart'),
+        (2, "Premium"),
+        (3, "VIP")
     ], default=0)
 
 
@@ -38,16 +39,15 @@ class Payment(models.Model):
         (2, "Payed"),
         (-1, "Cancelled"),
     ], default=1)
-    # amount = models.IntegerField(blank=False)
 
 
     @property
     def amount(self):
         return (
-            100_000_000 if self.plan == 1 else (
-                200_000_000 if self.plan == 2 else 300_000_000
+            179 if self.plan == 1 else (
+                229 if self.plan == 2 else 399
             )
-        )
+        ) * self.usd_course
         
 
 
@@ -118,3 +118,18 @@ class Transaction(models.Model):
         self.reason = reason
         self.save()
 
+
+
+
+
+
+
+
+class JustRequest(models.Model):
+    name = models.CharField(max_length=500)
+    phone = models.CharField(max_length=15, blank=False)
+    plan = models.IntegerField(choices=[
+        (1, 'Standart'),
+        (2, "Premium"),
+        (3, "VIP")
+    ], default=0)
