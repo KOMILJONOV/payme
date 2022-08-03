@@ -94,6 +94,7 @@ def register(request):
     data = json.loads(res)
     plan = data['plan']
     new_user: Payment = Payment.objects.create(
+        name=data['name'],
         phone=data['number'],
         plan=plan
     )
