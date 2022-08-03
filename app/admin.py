@@ -4,5 +4,12 @@ from django.contrib import admin
 from .models import Transaction, Payment
 
 
-admin.site.register(Payment)
+
+
+class PaymentAdmin(admin.ModelAdmin):
+    model = Payment
+    list_display = ['name', 'phone', 'usd_course', 'plan', 'amount']
+
+
+admin.site.register(Payment, PaymentAdmin)
 admin.site.register(Transaction)
