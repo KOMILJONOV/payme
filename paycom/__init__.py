@@ -142,9 +142,9 @@ class Paycom:
                 "error": {
                     "code": -31001,
                     "message": {
-                        "uz": f"Kechirasiz to'lov summasi to'g'ri kelmadi. {self.params.params.amount}{ pay.amount}",
-                        "ru": f"Kechirasiz to'lov summasi to'g'ri kelmadi. {self.params.params.amount}{ pay.amount}",
-                        "en": f"Kechirasiz to'lov summasi to'g'ri kelmadi. {self.params.params.amount}{ pay.amount}"
+                        "uz": f"Kechirasiz to'lov summasi to'g'ri kelmadi. {self.params.params.amount} { pay.amount}",
+                        "ru": f"Kechirasiz to'lov summasi to'g'ri kelmadi. {self.params.params.amount} { pay.amount}",
+                        "en": f"Kechirasiz to'lov summasi to'g'ri kelmadi. {self.params.params.amount} { pay.amount}"
                     }
                 }
             }
