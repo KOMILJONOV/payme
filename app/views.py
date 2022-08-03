@@ -93,7 +93,7 @@ def get_course():
     if res.status_code == 200:
         for i in res.json():
             if i['code'] == "USD":
-                return i['nbu_cell_price']
+                return float(i['nbu_cell_price'])
     else:
         return get_course()
 
@@ -108,7 +108,11 @@ def register(request):
         plan=data['plan'],
         usd_course=usd_course
     )
-
+    print(
+        new_user.usd_course,
+        type(new_user.usd_course)
+    )
+    print(type(new_user.amount))
     return JsonResponse(
         {
             "ok": True,
