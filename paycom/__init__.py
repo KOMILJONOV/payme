@@ -135,16 +135,16 @@ class Paycom:
             }
         
         
-
+        
         if self.params.params.amount != pay.amount:
             return {
                 "ok": False,
                 "error": {
                     "code": -31001,
                     "message": {
-                        "uz": "Kechirasiz to'lov summasi to'g'ri kelmadi.",
-                        "ru": "Kechirasiz to'lov summasi to'g'ri kelmadi.",
-                        "en": "Kechirasiz to'lov summasi to'g'ri kelmadi."
+                        "uz": f"Kechirasiz to'lov summasi to'g'ri kelmadi. {self.params.params.amount}{ pay.amount}",
+                        "ru": f"Kechirasiz to'lov summasi to'g'ri kelmadi. {self.params.params.amount}{ pay.amount}",
+                        "en": f"Kechirasiz to'lov summasi to'g'ri kelmadi. {self.params.params.amount}{ pay.amount}"
                     }
                 }
             }
